@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise | Frontend Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" "index.css">
+    <link rel="stylesheet" href="index.css">
+
+</head>
+<body class="dark:bg-slate-900 dark:text-white">
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Scroll to Top Button -->
+    <div class="scroll-to-top">
+        <i class="fas fa-arrow-up text-xl"></i>
+    </div>
+
+    <!-- Floating Contact Button -->
+    <div class="floating-contact">
+        <div class="floating-contact-btn" id="contactBtn">
+            <i class="fas fa-pr-plane text-xl"></i>
+        </div>
+        <!-- Quick Access Contact Button with Paper Plane Icon -->
+        <a href="#contact" class="fixed bottom-20 left-4 z-50 w-14 h-14 bg-primary text-white rounded-full shadow-lg flex items-center justify-center hover:bg-primary-dark transition duration-300">
+            <i class="fas fa-paper-plane text-2xl"></i>
+        </a>
+
+        <div class="contact-form" id="contactForm">
+            <h3 class="text-lg font-bold mb-4">Let's Talk</h3>
+            <form id="contactFormElement">
+                <div class="mb-3">
+                    <input type="text" placeholder="Your Name" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-slate-800">
+                </div>
+                <div class="mb-3">
+                    <input type="email" placeholder="Your Email" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-slate-800">
+                </div>
+                <div class="mb-3">
+                    <textarea placeholder="Your Message" rows="3" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-slate-800"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-primary hover:bg-primary-dark text-white py-2 px-4 rounded-md transition duration-300">Send Message</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="fixed w-full bg-white/80 dark:bg-slate-900/80 backdrop-blur-md z-50 shadow-sm">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-primary">Promise Designs.</a>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex space-x-8">
+                <a href="#home" class="hover:text-primary transition duration-300">Home</a>
+                <a href="#about" class="hover:text-primary transition duration-300">About</a>
+                <a href="#skills" class="hover:text-primary transition duration-300">Skills</a>
+                <a href="#projects" class="hover:text-primary transition duration-300">Projects</a>
+                <a href="#contact" class="hover:text-primary transition duration-300">Contact</a>
+            </nav>
+
+            <!-- Dark Mode Toggle -->
+            <div class="flex items-center space-x-4">
+                <button id="themeToggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-slate-700 transition duration-300">
+                    <i class="fas fa-moon dark:hidden"></i>
+                    <i class="fas fa-sun hidden dark:block"></i>
+                </button>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="md:hidden p-2 rounded-full hover:bg-gray-200 dark:hover:bg-slate-700 transition duration-300">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu md:hidden dark:bg-slate-800" id="mobileMenu">
+        <div class="p-6 flex flex-col h-full">
+            <div class="flex justify-between items-center mb-8">
+                <a href="#" class="text-2xl font-bold text-primary">Promise.</a>
+                <button id="closeMenuBtn" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-slate-700 transition duration-300">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <nav class="flex flex-col space-y-6 flex-grow">
+                <a href="#home" class="text-lg hover:text-primary transition duration-300" onclick="closeMobileMenu()">Home</a>
+                <a href="#about" class="text-lg hover:text-primary transition duration-300" onclick="closeMobileMenu()">About</a>
+                <a href="#skills" class="text-lg hover:text-primary transition duration-300" onclick="closeMobileMenu()">Skills</a>
+                <a href="#projects" class="text-lg hover:text-primary transition duration-300" onclick="closeMobileMenu()">Projects</a>
+                <a href="#contact" class="text-lg hover:text-primary transition duration-300" onclick="closeMobileMenu()">Contact</a>
+            </nav>
+            <div class="mt-auto pt-6 border-t border-gray-200 dark:border-slate-700">
+                <div class="flex space-x-4 justify-center">
+                    <a href="#" class="text-xl hover:text-primary transition duration-300"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="text-xl hover:text-primary transition duration-300"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-xl hover:text-primary transition duration-300"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="min-h-screen flex items-center pt-20">
+            <div class="container mx-auto px-6 py-20">
+                <div class="flex flex-col md:flex-row items-center">
+                    <div class="md:w-1/2 mb-12 md:mb-0">
+                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+                            Hi, I'm <span class="text-primary"> Abaleke Promise</span>
+                        </h1>
+                        <div class="text-2xl md:text-3xl lg:text-4xl font-semibold mb-8 h-12">
+                            <span class="typing-text" id="typingText"></span>
+                        </div>
+                        <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-lg">
+                            I create beautiful, responsive websites with clean code and modern design principles. Let's build something amazing together!
+                        </p>
+                        <div class="flex flex-wrap gap-4">
+                            <a href="#contact" class="bg-primary hover:bg-primary-dark text-white px-6 py-3 rounded-md font-medium transition duration-300">
+                                Contact Me
+                            </a>
+                            <a href="Abaleke_Promise_CV (1).docx" class="border border-primary text-primary hover:bg-primary hover:text-white px-6 py-3 rounded-md font-medium transition duration-300">
+                                Download CV
+                            </a>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 flex justify-center">
+                        <div class="relative w-full max-w-md">
+                            <div class="absolute -top-6 -left-6 w-32 h-32 bg-primary rounded-full opacity-20 animate-pulse"></div>
+                            <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-primary rounded-full opacity-20 animate-pulse delay-300"></div>
+                            <div class="relative bg-white dark:bg-slate-800 p-4 rounded-xl shadow-xl">
+                                <div class="h-48 overflow-hidden">
+                                    <img src="one.jpg" alt="E-commerce Website Screenshot" class="w-full h-full object-cover">
+                                </div>
+
+                            </div>
+                            <div class="mt-4">
+                                <h3 class="text-xl font-semibold">Latest Project</h3>
+                                <p class="text-gray-600 dark:text-gray-300 mt-2">
+                                    Modern responsive website with interactive elements
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-50 dark:bg-slate-800">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">About <span class="text-primary">Me</span></h2>
+                <div class="w-20 h-1 bg-primary mx-auto"></div>
+            </div>
+
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2">
+                    <div class="bg-white dark:bg-slate-700 p-8 rounded-xl shadow-lg">
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+                            I'm Abaleke Promise, a passionate Frontend Developer and Creative Designer based in Lagos, Nigeria. With over 2 years of hands-on experience, I specialize in building elegant, responsive websites and intuitive user interfaces that bridge the gap between functionality and design.
+                        </p>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+                            I studied and worked at Infotech, where I deepened my expertise in technologies like HTML, CSS, JavaScript, React, and PHP — alongside tools like Figma, Adobe Photoshop, and GitHub. Whether it's crafting a clean UI, optimizing performance, or bringing a design to life with animation, I’m all about delivering high-impact results.
+                        </p>
+                        <p class="text-gray-600 dark:text-gray-300">
+                            Outside of coding, you’ll find me designing logos, experimenting with layouts in Illustrator, or exploring new ways to improve user experience. I love collaborating with forward-thinking teams to solve real-world problems through beautiful digital solutions.
+                        </p>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <div class="grid grid-cols-2 gap-4">
+
+                        <!-- Web Development -->
+                        <div class="bg-white dark:bg-slate-700 p-6 rounded-xl shadow-lg flex flex-col items-center">
+                            <div class="w-full h-[100px] overflow-hidden rounded-md mb-4">
+                                <img src="webdevelopment.jpg" alt="Web Development Banner" class="w-full h-full object-cover">
+                            </div>
+                            <h4 class="text-xl font-semibold mb-2">Web Development</h4>
+                            <p class="text-gray-600 dark:text-gray-300 text-center">
+                                Building responsive and interactive websites with modern technologies.
+                            </p>
+                        </div>
+
+                        <!-- UI/UX Design -->
+                        <div class="bg-white dark:bg-slate-700 p-6 rounded-xl shadow-lg flex flex-col items-center">
+                            <div class="w-full h-[100px] overflow-hidden rounded-md mb-4">
+                                <img src="ux.jpg" alt="UI/UX Design Banner" class="w-full h-full object-cover">
+                            </div>
+                            <h4 class="text-xl font-semibold mb-2">UI/UX Design</h4>
+                            <p class="text-gray-600 dark:text-gray-300 text-center">
+                                Creating intuitive and beautiful user interfaces and experiences.
+                            </p>
+                        </div>
+
+                        <!-- Responsive Design -->
+                        <div class="bg-white dark:bg-slate-700 p-6 rounded-xl shadow-lg flex flex-col items-center">
+                            <div class="w-full h-[100px] overflow-hidden rounded-md mb-4">
+                                <img src="responsive.jpg" alt="Responsive Design Banner" class="w-full h-full object-cover">
+                            </div>
+                            <h4 class="text-xl font-semibold mb-2">Responsive Design</h4>
+                            <p class="text-gray-600 dark:text-gray-300 text-center">
+                                Ensuring websites look great on all devices and screen sizes.
+                            </p>
+                        </div>
+
+                        <!-- Performance Optimization -->
+                        <div class="bg-white dark:bg-slate-700 p-6 rounded-xl shadow-lg flex flex-col items-center">
+                            <div class="w-full h-[100px] overflow-hidden rounded-md mb-4">
+                                <img src="performance.jpg" alt="Performance Optimization Banner" class="w-full h-full object-cover">
+                            </div>
+                            <h4 class="text-xl font-semibold mb-2">Performance Optimization</h4>
+                            <p class="text-gray-600 dark:text-gray-300 text-center">
+                                Speeding up websites for better user experience and search visibility.
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Skills Section -->
+<section id="skills" class="py-20">
+<div class="container mx-auto px-6">
+<div class="text-center mb-16">
+<h2 class="text-3xl md:text-4xl font-bold mb-4">My <span class="text-primary">Skills</span></h2>
+<div class="w-20 h-1 bg-primary mx-auto"></div>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+<div>
+<h3 class="text-2xl font-semibold mb-6">Technical Skills</h3>
+
+<div class="space-y-6">
+<div>
+<div class="flex justify-between mb-2">
+<span class="font-medium">HTML5</span>
+<span>95%</span>
+</div>
+<div class="skill-bar">
+<div class="skill-progress" style="width: 95%"></div>
+</div>
+</div>
+
+<div>
+<div class="flex justify-between mb-2">
+<span class="font-medium">CSS3 & Tailwind</span>
+<span>90%</span>
+</div>
+<div class="skill-bar">
+<div class="skill-progress" style="width: 90%"></div>
+</div>
+</div>
+
+<div>
+<div class="flex justify-between mb-2">
+<span class="font-medium">JavaScript</span>
+<span>85%</span>
+</div>
+<div class="skill-bar">
+<div class="skill-progress" style="width: 85%"></div>
+</div>
+</div>
+
+<div>
+<div class="flex justify-between mb-2">
+<span class="font-medium">React</span>
+<span>80%</span>
+</div>
+<div class="skill-bar">
+<div class="skill-progress" style="width: 80%"></div>
+</div>
+</div>
+</div>
+</div>
+
+<div>
+<h3 class="text-2xl font-semibold mb-6">Tools & Technologies</h3>
+<!-- PixelLab Card -->
+<div class="flex flex-col items-center p-4 bg-white dark:bg-slate-700 rounded-lg shadow-sm hover:shadow-md transition duration-300">
+<div class="h-48 overflow-hidden w-full rounded-md mb-3">
+<img src="pixellab.jpg" alt="PixelLab Screenshot" class="w-full h-full object-cover">
+</div>
+<span class="font-medium">PixelLab</span>
+</div>
+
+<!-- GitHub Card -->
+<div class="flex flex-col items-center p-4 bg-white dark:bg-slate-700 rounded-lg shadow-sm hover:shadow-md transition duration-300">
+<div class="h-48 overflow-hidden w-full rounded-md mb-3">
+<img src="github.jpg" alt="GitHub Screenshot" class="w-full h-full object-cover">
+</div>
+<span class="font-medium">GitHub</span>
+</div>
+>
+
+<div class="flex flex-col items-center p-4 bg-white dark:bg-slate-700 rounded-lg shadow-sm hover:shadow-md transition duration-300">
+<div class="h-48 overflow-hidden">
+<img src="vscode.jpg" alt="E-commerce Website Screenshot" class="w-full h-full object-cover">
+</div>
+
+<span class="font-medium">VS Code</span>
+</div>
+<div class="flex flex-col items-center p-4 bg-white dark:bg-slate-700 rounded-lg shadow-sm hover:shadow-md transition duration-300">
+<div class="h-48 overflow-hidden">
+<img src="canva.jpg" alt="E-commerce Website Screenshot" class="w-full h-full object-cover">
+</div>
+
+<span class="font-medium">Canva</span>
+</div>
+<div class="flex flex-col items-center p-4 bg-white dark:bg-slate-700 rounded-lg shadow-sm hover:shadow-md transition duration-300">
+<div class="h-48 overflow-hidden">
+<img src="adobexd.jpg" alt="E-commerce Website Screenshot" class="w-full h-full object-cover">
+</div>
+
+<span class="font-medium">Adobe XD</span>
+</div>
+<div class="flex flex-col items-center p-4 bg-white dark:bg-slate-700 rounded-lg shadow-sm hover:shadow-md transition duration-300">
+<div class="h-48 overflow-hidden">
+<img src="adobephotoshop.jpg" alt="E-commerce Website Screenshot" class="w-full h-full object-cover">
+</div>
+
+<span class="font-medium">Adobe Photoshop</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Projects Section -->
+<section id="projects" class="py-20 bg-gray-50 dark:bg-slate-800">
+<div class="container mx-auto px-6">
+<div class="text-center mb-16">
+<h2 class="text-3xl md:text-4xl font-bold mb-4">My <span class="text-primary">Projects</span></h2>
+<div class="w-20 h-1 bg-primary mx-auto"></div>
+<p class="text-gray-600 dark:text-gray-300 mt-6 max-w-2xl mx-auto">
+Here are some of my recent projects. Each one was built with attention to detail and a focus on user experience.
+</p>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Project 1 -->
+<div class="project-card bg-white dark:bg-slate-700 rounded-xl overflow-hidden shadow-lg">
+<div class="h-48 overflow-hidden">
+<img src="ecommerce.jpg" alt="E-commerce Website Screenshot" class="w-full h-full object-cover">
+</div>
+
+<div class="p-6">
+<h3 class="text-xl font-semibold mb-2">E-commerce Website</h3>
+<p class="text-gray-600 dark:text-gray-300 mb-4">
+A fully responsive e-commerce platform with product filtering, cart functionality, and secure checkout.
+</p>
+<div class="flex flex-wrap gap-2">
+<span class="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full">HTML</span>
+<span class="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full">CSS</span>
+<span class="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full">JavaScript</span>
+</div>
+<div class="mt-4 flex space-x-3">
+</div>
+</div>
+</div>
+
+<!-- Project 2 -->
+<div class="project-card bg-white dark:bg-slate-700 rounded-xl overflow-hidden shadow-lg">
+<div class="h-48 overflow-hidden">
+<img src="analyticdashboard.jpg" alt="E-commerce Website Screenshot" class="w-full h-full object-cover">
+</div>
+
+<div class="p-6">
+<h3 class="text-xl font-semibold mb-2">Analytics Dashboard</h3>
+<p class="text-gray-600 dark:text-gray-300 mb-4">
+An interactive dashboard with real-time data visualization and customizable widgets.
+</p>
+<div class="flex flex-wrap gap-2">
+<span class="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full">React</span>
+<span class="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full">Tailwind</span>
+<span class="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full">Chart.js</span>
+</div>
+<div class="mt-4 flex space-x-3">
+</div>
+</div>
+</div>
+
+<!-- Project 3 -->
+<div class="project-card bg-white dark:bg-slate-700 rounded-xl overflow-hidden shadow-lg">
+<div class="h-48 overflow-hidden">
+<img src="mobileapp.jpg" alt="E-commerce Website Screenshot" class="w-full h-full object-cover">
+</div>
+
+<div class="p-6">
+<h3 class="text-xl font-semibold mb-2">Mobile App UI</h3>
+<p class="text-gray-600 dark:text-gray-300 mb-4">
+A sleek mobile application interface with smooth animations and intuitive navigation.
+</p>
+<div class="flex flex-wrap gap-2">
+<span class="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full">Figma</span>
+<span class="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full">Adobe XD</span>
+<span class="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full">UI Design</span>
+</div>
+<div class="mt-4 flex space-x-3"></div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="text-center mt-12">
+</div>
+</div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="py-20">
+<div class="container mx-auto px-6">
+<div class="text-center mb-16">
+<h2 class="text-3xl md:text-4xl font-bold mb-4">Get In <span class="text-primary">Touch</span></h2>
+<div class="w-20 h-1 bg-primary mx-auto"></div>
+<p class="text-gray-600 dark:text-gray-300 mt-6 max-w-2xl mx-auto">
+Have a project in mind or want to discuss potential opportunities? Feel free to reach out!
+</p>
+</div>
+
+<div class="flex flex-col md:flex-row gap-12">
+<div class="md:w-1/2">
+<div class="bg-white dark:bg-slate-700 p-8 rounded-xl shadow-lg">
+<h3 class="text-2xl font-semibold mb-6">Contact Information</h3>
+
+<div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mr-4">
+<i class="fas fa-envelope text-primary"></i>
+</div>
+<div>
+<h4 class="font-medium">Email</h4>
+<p class="text-gray-600 dark:text-gray-300">
+abalekepromise1@gmail.com
+</p>
+</div>
+</div>
+
+<div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mr-4">
+<i class="fas fa-phone-alt text-primary"></i>
+</div>
+<div>
+<h4 class="font-medium">Phone</h4>
+<p class="text-gray-600 dark:text-gray-300">
++234 903 893 0826,
++234 702 617 6354
+</p>
+</div>
+<div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mr-4">
+<i class="fas fa-map-marker-alt text-primary"></i>
+</div>
+<div>
+<h4 class="font-medium">Location</h4>
+<p class="text-gray-600 dark:text-gray-300">
+Lagos, Nigeria
+</p>
+</div>
+</div>
+</div>
+
+<div class="mt-8">
+<h4 class="font-medium mb-4">Follow Me</h4>
+<div class="flex space-x-4">
+<a href="#" class="w-10 h-10 bg-gray-100 dark:bg-slate-600 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition duration-300">
+<i class="fab fa-facebook"></i>
+</a>
+<a href="#" class="w-10 h-10 bg-gray-100 dark:bg-slate-600 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition duration-300">
+<i class="fab fa-instagram"></i>
+</a>
+<a href="#" class="w-10 h-10 bg-gray-100 dark:bg-slate-600 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition duration-300">
+<i class="fab fa-twitter"></i>
+</a>
+<a href="#" class="w-10 h-10 bg-gray-100 dark:bg-slate-600 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition duration-300">
+<i class="fab fa-whatsapp"></i>
+</a>
+</div>
+</div>
+</div>
+</div>
+
+<div class="md:w-1/2">
+<div class="bg-white dark:bg-slate-700 p-8 rounded-xl shadow-lg">
+<h3 class="text-2xl font-semibold mb-6">Send Me a Message</h3>
+<form id="contactForm" action="https://formsubmit.co/abalekepromise1@gmail.com" method="POST">
+
+<!-- Disable captcha -->
+<input type="hidden" name="_captcha" value="false">
+
+<!-- Redirect to a thank-you page (optional) -->
+<input type="hidden" name="_next" value="https://promise-designs.github.io/portfolio.com/thanks.html">
+
+<div class="mb-6">
+<label for="name" class="block font-medium mb-2">Your Name</label>
+<input type="text" id="name" name="name" required
+class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-slate-800"
+placeholder="Your Name">
+</div>
+
+<div class="mb-6">
+<label for="email" class="block font-medium mb-2">Your Email</label>
+<input type="email" id="email" name="email" required
+class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-slate-800"
+placeholder="yourname@example.com">
+</div>
+
+<div class="mb-6">
+<label for="subject" class="block font-medium mb-2">Subject</label>
+<input type="text" id="subject" name="subject"
+class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-slate-800"
+placeholder="Project Inquiry">
+</div>
+
+<div class="mb-6">
+<label for="message" class="block font-medium mb-2">Your Message</label>
+<textarea id="message" name="message" rows="5" required
+class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-slate-800"
+placeholder="Tell me about your project..."></textarea>
+</div>
+
+<button type="submit"
+class="w-full bg-primary hover:bg-primary-dark text-white py-3 px-6 rounded-md font-medium transition duration-300">
+Send Message
+</button>
+
+</form>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+
+<!-- Footer -->
+<footer class="bg-gray-100 dark:bg-slate-800 py-12">
+<div class="container mx-auto px-6">
+<div class="flex flex-col md:flex-row justify-between items-center">
+<div class="mb-6 md:mb-0">
+<a href="#" class="text-2xl font-bold text-primary">Promise Designs.</a>
+<p class="text-gray-600 dark:text-gray-300 mt-2">
+Creating digital experiences that matter.
+</p>
+</div>
+
+<div class="flex space-x-6">
+<a href="#" class="text-gray-600 dark:text-gray-300 hover:text-primary transition duration-300">
+<i class="fab fa-facebook text-xl"></i>
+</a>
+<a href="#" class="text-gray-600 dark:text-gray-300 hover:text-primary transition duration-300">
+<i class="fab fa-instagram text-xl"></i>
+</a>
+<a href="#" class="text-gray-600 dark:text-gray-300 hover:text-primary transition duration-300">
+<i class="fab fa-twitter text-xl"></i>
+</a>
+<a href="#" class="text-gray-600 dark:text-gray-300 hover:text-primary transition duration-300">
+<i class="fab fa-whatsapp text-xl"></i>
+</a>
+</div>
+</div>
+
+<div class="border-t border-gray-200 dark:border-slate-700 mt-8 pt-8 text-center">
+<p class="text-gray-600 dark:text-gray-300">
+&copy; <span id="currentYear"></span> Promise Designs. All rights reserved.
+</p>
+</div>
+</div>
+</footer>
+<script>
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+e.preventDefault(); // stop normal submit
+
+const form = e.target;
+const data = new FormData(form);
+
+fetch(form.action, {
+method: form.method,
+body: data,
+headers: {
+'Accept': 'application/json'
+}
+}).then(response => {
+if (response.ok) {
+document.getElementById('thankYouMessage').textContent = 'Thanks for your message! I will get back to you soon.';
+document.getElementById('thankYouMessage').classList.remove('hidden');
+form.reset();
+} else {
+alert('Oops! There was a problem submitting your form.');
+}
+}).catch(() => {
+alert('Oops! There was a problem submitting your form.');
+});
+}); < script >
+// Preloader
+window.addEventListener('load', function() {
+const preloader = document.querySelector('.preloader');
+setTimeout(() => {
+preloader.classList.add('fade-out');
+},
+1000);
+});
+
+// Typing Animation
+const typingText = document.getElementById('typingText');
+const phrases = [
+"Frontend Developer",
+"Graphics Designer",
+"UI/UX Designer",
+"Web Designer"
+];
+let phraseIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+let isEnd = false;
+
+function type() {
+const currentPhrase = phrases[phraseIndex];
+
+if (isDeleting) {
+typingText.textContent = currentPhrase.substring(0, charIndex - 1);
+charIndex--;
+} else {
+typingText.textContent = currentPhrase.substring(0, charIndex + 1);
+charIndex++;
+}
+
+if (!isDeleting && charIndex === currentPhrase.length) {
+isEnd = true;
+setTimeout(() => {
+isDeleting = true;
+}, 1500);
+} else if (isDeleting && charIndex === 0) {
+isDeleting = false;
+phraseIndex = (phraseIndex + 1) % phrases.length;
+}
+
+const speedUp = Math.random() * (100 - 50) + 50;
+const normalSpeed = Math.random() * (300 - 150) + 150;
+const time = isEnd ? 2000: isDeleting ? speedUp: normalSpeed;
+
+setTimeout(type, time);
+}
+
+// Start typing animation
+setTimeout(type, 1500);
+
+// Dark/Light Mode Toggle
+const themeToggle = document.getElementById('themeToggle');
+const html = document.documentElement;
+
+// Check for saved user preference or use system preference
+if (localStorage.getItem('theme') === 'dark' ||
+(!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+html.classList.add('dark');
+} else {
+html.classList.remove('dark');
+}
+
+themeToggle.addEventListener('click', () => {
+html.classList.toggle('dark');
+localStorage.setItem('theme', html.classList.contains('dark') ? 'dark': 'light');
+});
+
+// Mobile Menu Toggle
+const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+const closeMenuBtn = document.getElementById('closeMenuBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+
+mobileMenuBtn.addEventListener('click', () => {
+mobileMenu.classList.add('open');
+});
+
+closeMenuBtn.addEventListener('click', () => {
+mobileMenu.classList.remove('open');
+});
+
+function closeMobileMenu() {
+mobileMenu.classList.remove('open');
+}
+
+// Contact Form Toggle
+const contactBtn = document.getElementById('contactBtn');
+const contactForm = document.getElementById('contactForm');
+
+contactBtn.addEventListener('click', () => {
+contactForm.classList.toggle('active');
+});
+
+// Close contact form when clicking outside
+document.addEventListener('click', (e) => {
+if (!contactForm.contains(e.target) && e.target !== contactBtn) {
+contactForm.classList.remove('active');
+}
+});
+
+// Scroll to Top Button
+const scrollToTopBtn = document.querySelector('.scroll-to-top');
+
+window.addEventListener('scroll', () => {
+if (window.pageYOffset > 300) {
+scrollToTopBtn.classList.add('active');
+} else {
+scrollToTopBtn.classList.remove('active');
+}
+});
+
+scrollToTopBtn.addEventListener('click', () => {
+window.scrollTo({
+top: 0,
+behavior: 'smooth'
+});
+});
+
+// Smooth scrolling for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+anchor.addEventListener('click', function(e) {
+e.preventDefault();
+
+const targetId = this.getAttribute('href');
+const targetElement = document.querySelector(targetId);
+
+if (targetElement) {
+window.scrollTo({
+top: targetElement.offsetTop - 80,
+behavior: 'smooth'
+});
+}
+});
+});
+
+// Set current year in footer
+document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+// Animate skill bars on scroll
+const skillBars = document.querySelectorAll('.skill-progress');
+
+function animateSkillBars() {
+skillBars.forEach(bar => {
+const width = bar.style.width;
+bar.style.width = '0';
+setTimeout(() => {
+bar.style.width = width;
+},
+100);
+});
+}
+
+// Intersection Observer for skill bars animation
+const skillsSection = document.getElementById('skills');
+const observer = new IntersectionObserver((entries) => {
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+animateSkillBars();
+observer.unobserve(entry.target);
+}
+});
+}, {
+threshold: 0.1
+});
+
+observer.observe(skillsSection);
+</script>
+</body>
+</html>
